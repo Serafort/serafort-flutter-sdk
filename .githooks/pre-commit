@@ -1,0 +1,24 @@
+#!/bin/sh
+# Portable pre-commit hook for the Serafort Flutter SDK.
+#
+# Plain POSIX shell wired in via `git config core.hooksPath .githooks` —
+# no Husky/npm tooling required for this pure Dart/Flutter package.
+#
+# Enable it once per clone with:
+#   git config core.hooksPath .githooks
+
+set -e
+
+if ! command -v flutter >/dev/null 2>&1; then
+	echo "[pre-commit] flutter not found on PATH, skipping local checks."
+	echo "[pre-commit] Install the Flutter SDK to run analyze/test before commit."
+	exit 0
+fi
+
+echo "[pre-commit] Running flutter analyze..."
+flutter analyze
+
+echo "[pre-commit] Running flutter test..."
+flutter test
+
+echo "[pre-commit] All checks passed."

@@ -40,3 +40,23 @@ if (client.hasPermission('billing:manage')) {
   // Show Billing View
 }
 ```
+
+## Contributing
+
+### Requirements
+
+- Flutter SDK (stable channel), Dart >=3.0.0 <4.0.0
+
+### Git hooks
+
+This repo ships a portable pre-commit hook under `.githooks/pre-commit` that runs `flutter analyze` and `flutter test` before every commit. It is **not** installed automatically — enable it once per clone with:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+There is no Husky setup here: Husky is an npm-ecosystem tool, and while this repo is JS-adjacent in spirit, the package itself is pure Dart/Flutter with no Node.js tooling involved. A plain POSIX shell script wired through `core.hooksPath` is the dependency-free equivalent, and skips its checks gracefully if `flutter` isn't on `PATH`.
+
+### CI
+
+Every push and pull request against `main` runs `flutter pub get`, `flutter analyze`, and `flutter test` via GitHub Actions (`.github/workflows/ci.yml`).
