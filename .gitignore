@@ -1,0 +1,35 @@
+# Dart/Flutter tool artifacts
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+
+# Package is a library, not an app: lockfile is not committed
+pubspec.lock
+
+# Symlinks created by pub
+/.packages
+
+# Coverage
+coverage/
+*.lcov
+
+# IDE / editor folders
+.idea/
+.vscode/
+*.iml
+*.iws
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Android/iOS/Web/Desktop build outputs (relevant if example app is added later)
+**/android/.gradle/
+**/ios/Pods/
+**/ios/.symlinks/
+**/macos/Pods/
+**/ephemeral/
